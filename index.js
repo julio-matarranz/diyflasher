@@ -117,7 +117,7 @@ connectButton.onclick = async () => {
    ];
    } else if (["nerdminer2_1.6.2_ESP32-2432S028R"].includes(diymodelsel.value)) { // nerd WROOM
     addressesAndFiles = [
-      {address: '0x1000', fileName: '0x0000_bootloader.bin', progressBar: btprogressBar},
+      {address: '0x1000', fileName: '0x1000_bootloader.bin', progressBar: btprogressBar},
       {address: '0x8000', fileName: '0x8000_partitions.bin', progressBar: ptprogressBar},
       {address: '0xE000', fileName: '0xe000_boot_app0.bin', progressBar: otaprogressBar},
       {address: '0x10000', fileName: '0x10000_firmware.bin', progressBar: firmwareprogressBar},
