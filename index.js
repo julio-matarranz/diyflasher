@@ -131,7 +131,7 @@ connectButton.onclick = async () => {
    ];
    } else if (["nerdAxe_2.1.4"].includes(diymodelsel.value)) { // nerdaxe
     addressesAndFiles = [
-      {address: '0x0000', fileName: 'esp-miner-factory-nerd101-v2.1.4.bin', progressBar: btprogressBar},
+      {address: '0x0000', fileName: 'esp-miner-factory-nerd101-v2.1.4.bin', progressBar: firmwareprogressBar},
    ];
    }
 
