@@ -61,7 +61,7 @@
                 <label><input type="radio" name="device" value="NerdAxe"> NerdAxe</label>
                 <label><input type="radio" name="device" value="Bitaxe"> Bitaxe</label>
             </div>
-            <p id="deviceInfo">El tiempo para cargar el firmware puede ser de más de 1 minuto</p>
+            <p id="deviceInfo">Flashing NerdMiner firmware should be less than 1 minute</p>
         </div>
         <div id="safariErr" style="display:none"><p align="center" style="color:red">This tool is not supported on Safari browser!</p></div>
         <div class="container content-container" id="main">
@@ -118,7 +118,7 @@
                     { value: "nerdAxe_2.1.4", text: "NerdAxe factory firmware v2.1.4 (TDisplay-S3)" }
                 ];
                 const bitaxeOptions = [
-                    { value: "bitaxe_1.0.0", text: "Bitaxe firmware v1.0.0" }
+                    { value: "bitaxe_1.0.0", text: "Bitaxe firmware - In construction" }
                 ];
 
                 function updateOptions(options) {
@@ -165,7 +165,7 @@
                 // Initialize default options and image
                 updateOptions(nerdMinerOptions);
                 showImage(0);
-                deviceInfo.innerText = "El tiempo para cargar el firmware de NerdMiner puede ser de más de 1 minuto";
+                deviceInfo.innerText = "Flashing NerdMiner firmware should be less than 1 minute";
             </script>
         </div>
     </body>
