@@ -40,7 +40,10 @@
                 background-color: #2B2727; /* Background color for the third image */
             }
             .content-container {
-                margin-left: 150px; /* Adjust this value to align with the start of the image */
+                margin: 0 auto; /* Center horizontally */
+                max-width: 800px; /* Fixed width */
+                text-align: left; /* Align text to the left */
+                padding: 20px; /* Padding for some spacing */
             }
         </style>
     </head>
@@ -48,7 +51,7 @@
         <div class="image-container">
             <img src="media/NerdMiner.png" class="slideshow" alt="NerdMiner Background" />
             <img src="media/NerdAxe.png" class="slideshow" alt="NerdAxe Background" />
-            <img src="media/Bitaxe.png" class="slideshow" alt="Bitaxe Background" />
+            <img src="media/bitaxe.png" class="slideshow" alt="Bitaxe Background" />
         </div>
         <div class="container content-container">
             <h1 align="left"><p>Flash your board</p></h1>
@@ -58,6 +61,7 @@
                 <label><input type="radio" name="device" value="NerdAxe"> NerdAxe</label>
                 <label><input type="radio" name="device" value="Bitaxe"> Bitaxe</label>
             </div>
+            <p id="deviceInfo">El tiempo para cargar el firmware puede ser de más de 1 minuto</p>
         </div>
         <div id="safariErr" style="display:none"><p align="center" style="color:red">This tool is not supported on Safari browser!</p></div>
         <div class="container content-container" id="main">
@@ -99,6 +103,7 @@
                 const images = document.querySelectorAll('.slideshow');
                 const diymodelsel = document.getElementById('diymodelsel');
                 const deviceRadios = document.querySelectorAll('input[name="device"]');
+                const deviceInfo = document.getElementById('deviceInfo');
                 const nerdMinerOptions = [
                     { value: "nerdminer2_1.6.3_tdisplays3", text: "NerdMinerv2 1.6.3 original board T-Display S3" },
                     { value: "nerdminer2_1.6.3_s3Dongle", text: "NMV2 1.6.3 on LILYGO S3 Dongle" },
@@ -141,14 +146,17 @@
                             case 'NerdMiner':
                                 updateOptions(nerdMinerOptions);
                                 showImage(0);
+                                deviceInfo.innerText = "The time to flash NerdMiner firmware is less than 1 minute";
                                 break;
                             case 'NerdAxe':
                                 updateOptions(nerdAxeOptions);
                                 showImage(1);
+                                deviceInfo.innerText = "The time to flash NerdAxe firmware can be more than 2 minutes";
                                 break;
                             case 'Bitaxe':
                                 updateOptions(bitaxeOptions);
                                 showImage(2);
+                                deviceInfo.innerText = "The time to flash Bitaxe firmware can be more than 2 minutes";
                                 break;
                         }
                     });
@@ -157,6 +165,7 @@
                 // Initialize default options and image
                 updateOptions(nerdMinerOptions);
                 showImage(0);
+                deviceInfo.innerText = "El tiempo para cargar el firmware de NerdMiner puede ser de más de 1 minuto";
             </script>
         </div>
     </body>
