@@ -136,42 +136,51 @@ connectButton.onclick = async () => {
    }
 
 
+  // Rest of the code
   let fileArray = [];
 
   for (const item of addressesAndFiles) {
-
-      console.log(`Address: ${item.address}, File Name: ${item.fileName}`);
-      const response = await fetch("assets/" + diymodelsel.value + "/" + item.fileName);
+    try {
+      console.log(`Fetching: assets/${diymodelsel.value}/${item.fileName}`);
+      const response = await fetch(`assets/${diymodelsel.value}/${item.fileName}`);
       if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status} for file ${item.fileName}`);
       }
       const fileBlob = await response.blob();
       const fileData = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsBinaryString(fileBlob);
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsBinaryString(fileBlob);
       });
       fileArray.push({
-          data: fileData,
-          address: item.address
+        data: fileData,
+        address: item.address
       });
+    } catch (e) {
+      console.error(`Failed to fetch or process file ${item.fileName}: ${e}`);
+      document.getElementById("success").innerHTML = `Failed to fetch or process file ${item.fileName}: ${e}`;
+      return;  // Exit the function if there's an error
+    }
   }
+
   try {
-      await esploader.write_flash(
-          fileArray,
-          'keep',
-          'keep',
-          'keep',
-          false,
-          true,
-          (fileIndex, written, total) => {
-            addressesAndFiles[fileIndex].progressBar.value = (written / total) * 100;
-          },
-          null
-      );
+    await esploader.write_flash(
+      fileArray,
+      'keep',
+      'keep',
+      'keep',
+      false,
+      true,
+      (fileIndex, written, total) => {
+        addressesAndFiles[fileIndex].progressBar.value = (written / total) * 100;
+      },
+      null
+    );
   } catch (e) {
-      console.error(e);
+    console.error(e);
+    document.getElementById("success").innerHTML = `Flashing failed: ${e}`;
+    return;  // Exit the function if there's an error
   }
   await new Promise((resolve) => setTimeout(resolve, 100));
   await transport.setDTR(false);
