@@ -1,5 +1,6 @@
 const diymodelsel = document.getElementById('diymodelsel');
 const connectButton = document.getElementById('connectButton');
+const eraseButton = document.getElementById('eraseButton');
 const btprogressBar = document.getElementById('bootloaderprogress');
 const btprogressBarLbl = document.getElementById('bootloaderprogresslbl');
 const otaprogressBar = document.getElementById('otaprogress');
@@ -20,26 +21,18 @@ let transport;
 let chip = null;
 let esploader;
 
-const eraseButton = document.getElementById('eraseButton');
-
 eraseButton.onclick = async () => {
   eraseButton.style.display = 'none';
   lbldiymodels.style.display = 'none';
   diymodelsel.style.display = 'none';
+  document.getElementById("success").innerHTML = ``;
   if (device === null) {
     device = await navigator.serial.requestPort({});
     transport = new Transport(device);
   }
 
-  btprogressBar.style.display = 'block';
-  otaprogressBar.style.display = 'block';
-  ptprogressBar.style.display = 'block';
-  firmwareprogressBar.style.display = 'block';
-
-  btprogressBarLbl.style.display = 'block';
-  otaprogressBarLbl.style.display = 'block';
-  ptprogressBarLbl.style.display = 'block';
   firmwareprogressBarlbl.style.display = 'block';
+
 
   var baudrate = 921600;
 
@@ -51,6 +44,8 @@ eraseButton.onclick = async () => {
   }
 
   try {
+    document.getElementById("success").innerHTML = `Trying to erase flash`;
+
     await esploader.erase_flash();
     document.getElementById("success").innerHTML = "Successfully erased flash memory";
   } catch (e) {
@@ -89,10 +84,6 @@ connectButton.onclick = async () => {
   firmwareprogressBarlbl.style.display = 'block';
 
   var baudrate = 921600;
-
-  if (diymodelsel.value == "jade_0.1.48_m5stickcplus") {
-      baudrate = 115200;
-  }
 
   try {
     esploader = new ESPLoader(transport, baudrate, null);
