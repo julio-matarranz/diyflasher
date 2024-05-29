@@ -38,7 +38,7 @@ eraseButton.onclick = async () => {
   try {
     try {
       esploader = new ESPLoader(transport, baudrate, null);
-      chip = await esploader.main_fn();
+      chip = await esploader.connect('default_reset', 3, true);
     } catch (e) {
       console.error(e);
     }
