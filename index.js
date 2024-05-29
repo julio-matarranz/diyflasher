@@ -66,6 +66,7 @@ eraseButton.onclick = async () => {
 
 connectButton.onclick = async () => {
   connectButton.style.display = 'none';
+  eraseButton.style.display = 'none';
   lbldiymodels.style.display = 'none';
   diymodelsel.style.display = 'none';
   if (device === null) {
@@ -73,14 +74,17 @@ connectButton.onclick = async () => {
     transport = new Transport(device);
   }
 
-  btprogressBar.style.display = 'block';
-  otaprogressBar.style.display = 'block';
-  ptprogressBar.style.display = 'block';
-  firmwareprogressBar.style.display = 'block';
+  // Check if the selected model is not NerdAxe to display progress bars
+  if (diymodelsel.value !== "nerdAxe_2.1.4") {
+    btprogressBar.style.display = 'block';
+    otaprogressBar.style.display = 'block';
+    ptprogressBar.style.display = 'block';
+    btprogressBarLbl.style.display = 'block';
+    otaprogressBarLbl.style.display = 'block';
+    ptprogressBarLbl.style.display = 'block';
+  }
 
-  btprogressBarLbl.style.display = 'block';
-  otaprogressBarLbl.style.display = 'block';
-  ptprogressBarLbl.style.display = 'block';
+  firmwareprogressBar.style.display = 'block';
   firmwareprogressBarlbl.style.display = 'block';
 
   var baudrate = 921600;
