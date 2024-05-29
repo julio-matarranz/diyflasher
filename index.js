@@ -21,12 +21,19 @@ let transport;
 let chip = null;
 let esploader;
 
+function addToLog(message) {
+  const log = document.getElementById('log');
+  log.textContent += message + '\n';
+  log.scrollTop = log.scrollHeight; // Scroll to the bottom
+}
+
 eraseButton.onclick = async () => {
   connectButton.style.display = 'none';
   eraseButton.style.display = 'none';
   lbldiymodels.style.display = 'none';
   diymodelsel.style.display = 'none';
   document.getElementById("success").innerHTML = ``;
+  addToLog('Starting flash erase process...');
   if (device === null) {
     device = await navigator.serial.requestPort({});
     transport = new Transport(device);
@@ -44,9 +51,11 @@ eraseButton.onclick = async () => {
     }
     console.log(`Connected to ${chip}.`);
     await esploader.eraseFlash();
+    addToLog('Erase flash complete.');
     document.getElementById("success").innerHTML = "Successfully erased flash memory";
   } catch (e) {
     console.error(e);
+    addToLog(`Erasing flash failed: ${e}`);
     document.getElementById("success").innerHTML = `Erasing flash failed: ${e}`;
   } finally {
     // Restore the DTR (Data Terminal Ready) line to its default state
@@ -69,6 +78,7 @@ connectButton.onclick = async () => {
   eraseButton.style.display = 'none';
   lbldiymodels.style.display = 'none';
   diymodelsel.style.display = 'none';
+  addToLog('Starting flash process...');
   if (device === null) {
     device = await navigator.serial.requestPort({});
     transport = new Transport(device);
@@ -90,11 +100,14 @@ connectButton.onclick = async () => {
   var baudrate = 921600;
 
   try {
-    esploader = new ESPLoader(transport, baudrate, null);
-    chip = await esploader.main_fn();
-  } catch (e) {
-    console.error(e);
-  }
+        esploader = new ESPLoader(transport, baudrate, null);
+        chip = await esploader.main_fn();
+        addToLog(`Connected to chip: ${chip}`);
+    } catch (e) {
+        console.error(e);
+        addToLog(`Error connecting to chip: ${e}`);
+    }
+
 
   let addressesAndFiles = [
     {address: '0x1000', fileName: 'bootloader.bin', progressBar: btprogressBar},
@@ -184,29 +197,31 @@ connectButton.onclick = async () => {
   let fileArray = [];
 
   for (const item of addressesAndFiles) {
-    try {
-      console.log(`Fetching: assets/${diymodelsel.value}/${item.fileName}`);
-      const response = await fetch(`assets/${diymodelsel.value}/${item.fileName}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status} for file ${item.fileName}`);
-      }
-      const fileBlob = await response.blob();
-      const fileData = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsBinaryString(fileBlob);
-      });
-      fileArray.push({
-        data: fileData,
-        address: item.address
-      });
-    } catch (e) {
-      console.error(`Failed to fetch or process file ${item.fileName}: ${e}`);
-      document.getElementById("success").innerHTML = `Failed to fetch or process file ${item.fileName}: ${e}`;
-      return;  // Exit the function if there's an error
+        try {
+            addToLog(`Fetching: assets/${diymodelsel.value}/${item.fileName}`);
+            const response = await fetch(`assets/${diymodelsel.value}/${item.fileName}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status} for file ${item.fileName}`);
+            }
+            const fileBlob = await response.blob();
+            const fileData = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsBinaryString(fileBlob);
+            });
+            fileArray.push({
+                data: fileData,
+                address: item.address
+            });
+            addToLog(`Fetched: ${item.fileName}`);
+        } catch (e) {
+            console.error(e);
+            addToLog(`Failed to fetch or process file ${item.fileName}: ${e}`);
+            document.getElementById("success").innerHTML = `Failed to fetch or process file ${item.fileName}: ${e}`;
+            return;  // Exit the function if there's an error
+        }
     }
-  }
 
   try {
     await esploader.write_flash(
@@ -218,11 +233,14 @@ connectButton.onclick = async () => {
       true,
       (fileIndex, written, total) => {
         addressesAndFiles[fileIndex].progressBar.value = (written / total) * 100;
+        addToLog(`Flashing ${addressesAndFiles[fileIndex].fileName}: ${((written / total) * 100).toFixed(2)}%`);
       },
       null
     );
+      addToLog('Flashing complete.');
   } catch (e) {
     console.error(e);
+    addToLog(`Flashing failed: ${e}`);
     document.getElementById("success").innerHTML = `Flashing failed: ${e}`;
     return;  // Exit the function if there's an error
   }
