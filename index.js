@@ -22,6 +22,7 @@ let chip = null;
 let esploader;
 
 eraseButton.onclick = async () => {
+  connectButton.style.display = 'none';
   eraseButton.style.display = 'none';
   lbldiymodels.style.display = 'none';
   diymodelsel.style.display = 'none';
@@ -34,33 +35,29 @@ eraseButton.onclick = async () => {
   firmwareprogressBarlbl.style.display = 'block';
 
 
-  var baudrate = 921600;
 
   try {
-    esploader = new ESPLoader(transport, baudrate, null);
-    chip = await esploader.main_fn();
-  } catch (e) {
-    console.error(e);
-  }
-
-  try {
-    document.getElementById("success").innerHTML = `Trying to erase flash`;
-
+    esploader = new ESPLoader(transport, 921600, null);
+    chip = await esploader.initialize();
+    console.log(`Connected to ${chip}.`);
     await esploader.erase_flash();
     document.getElementById("success").innerHTML = "Successfully erased flash memory";
   } catch (e) {
     console.error(e);
     document.getElementById("success").innerHTML = `Erasing flash failed: ${e}`;
+  } finally {
+    // Restore the DTR (Data Terminal Ready) line to its default state
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    await transport.setDTR(false);
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    await transport.setDTR(true);
+
+    // Restore the visibility of the UI elements
+    eraseButton.style.display = 'block';
+    connectButton.style.display = 'block';
+    lbldiymodels.style.display = 'block';
+    diymodelsel.style.display = 'block';
   }
-
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  await transport.setDTR(false);
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  await transport.setDTR(true);
-
-  eraseButton.style.display = 'block';
-  lbldiymodels.style.display = 'block';
-  diymodelsel.style.display = 'block';
 };
 
 
