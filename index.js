@@ -35,10 +35,13 @@ eraseButton.onclick = async () => {
   firmwareprogressBarlbl.style.display = 'block';
 
 
-
   try {
-    esploader = new ESPLoader(transport, 921600, null);
-    chip = await esploader.initialize();
+    try {
+      esploader = new ESPLoader(transport, baudrate, null);
+      chip = await esploader.main_fn();
+    } catch (e) {
+      console.error(e);
+    }
     console.log(`Connected to ${chip}.`);
     await esploader.erase_flash();
     document.getElementById("success").innerHTML = "Successfully erased flash memory";
