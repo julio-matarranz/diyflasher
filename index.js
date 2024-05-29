@@ -43,7 +43,7 @@ eraseButton.onclick = async () => {
       console.error(e);
     }
     console.log(`Connected to ${chip}.`);
-    await esploader.erase_flash();
+    await esploader.eraseFlash();
     document.getElementById("success").innerHTML = "Successfully erased flash memory";
   } catch (e) {
     console.error(e);
