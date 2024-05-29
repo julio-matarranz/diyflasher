@@ -20,6 +20,55 @@ let transport;
 let chip = null;
 let esploader;
 
+const eraseButton = document.getElementById('eraseButton');
+
+eraseButton.onclick = async () => {
+  eraseButton.style.display = 'none';
+  lbldiymodels.style.display = 'none';
+  diymodelsel.style.display = 'none';
+  if (device === null) {
+    device = await navigator.serial.requestPort({});
+    transport = new Transport(device);
+  }
+
+  btprogressBar.style.display = 'block';
+  otaprogressBar.style.display = 'block';
+  ptprogressBar.style.display = 'block';
+  firmwareprogressBar.style.display = 'block';
+
+  btprogressBarLbl.style.display = 'block';
+  otaprogressBarLbl.style.display = 'block';
+  ptprogressBarLbl.style.display = 'block';
+  firmwareprogressBarlbl.style.display = 'block';
+
+  var baudrate = 921600;
+
+  try {
+    esploader = new ESPLoader(transport, baudrate, null);
+    chip = await esploader.main_fn();
+  } catch (e) {
+    console.error(e);
+  }
+
+  try {
+    await esploader.erase_flash();
+    document.getElementById("success").innerHTML = "Successfully erased flash memory";
+  } catch (e) {
+    console.error(e);
+    document.getElementById("success").innerHTML = `Erasing flash failed: ${e}`;
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 100));
+  await transport.setDTR(false);
+  await new Promise((resolve) => setTimeout(resolve, 100));
+  await transport.setDTR(true);
+
+  eraseButton.style.display = 'block';
+  lbldiymodels.style.display = 'block';
+  diymodelsel.style.display = 'block';
+};
+
+
 connectButton.onclick = async () => {
   connectButton.style.display = 'none';
   lbldiymodels.style.display = 'none';
