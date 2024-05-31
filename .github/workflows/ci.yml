@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - jade_diy
+      - chore/build-all
   pull_request:
     branches:
       - jade_diy
