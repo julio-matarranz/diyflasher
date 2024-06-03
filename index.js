@@ -213,10 +213,10 @@ connectButton.onclick = async () => {
           } else {
             if(item.fileName.includes("boot_app0.bin")){              
               addToLog(`Fetching: ${diymodelsel.value.substring(0, diymodelsel.value.lastIndexOf("/") + 1)}${item.fileName}`);
-              response = await fetch(`${diymodelsel.value.substring(0, diymodelsel.value.lastIndexOf("/") + 1)}${item.fileName}`);
+              response = await fetch(`https://cors-anywhere.herokuapp.com/${diymodelsel.value.substring(0, diymodelsel.value.lastIndexOf("/") + 1)}${item.fileName}`);
             } else {
               addToLog(`Fetching: ${diymodelsel.value}_${item.fileName}`);
-              response = await fetch(`${diymodelsel.value}_${item.fileName}`);
+              response = await fetch(`https://cors-anywhere.herokuapp.com/${diymodelsel.value}_${item.fileName}`);
             }            
           }
            
