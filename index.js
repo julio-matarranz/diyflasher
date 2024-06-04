@@ -116,7 +116,7 @@ connectButton.onclick = async () => {
     {address: '0x10000', fileName: 'jade.bin', progressBar: firmwareprogressBar},
   ];  
 
-  if (diymodelsel.value.includes("https://github.com/BitMaker-hub/NerdMiner_v2")) { // github nerdminer releases
+  if (["nerdminer-prerelease", "nerdminer-release"].some(val => diymodelsel.options[diymodelsel.selectedIndex].text.includes(val))) { // github nerdminer releases
     addressesAndFiles = [
       {address: '0x1000', fileName: 'bootloader.bin', progressBar: btprogressBar},
       {address: '0x8000', fileName: 'partitions.bin', progressBar: ptprogressBar},
@@ -207,16 +207,22 @@ connectButton.onclick = async () => {
   for (const item of addressesAndFiles) {
         try {
           var response;
-          if(!diymodelsel.value.includes("https://github.com/BitMaker-hub/NerdMiner_v2")){
+          if(!["nerdminer-prerelease", "nerdminer-release"].some(val => diymodelsel.options[diymodelsel.selectedIndex].text.includes(val))){
             addToLog(`Fetching: assets/${diymodelsel.value}/${item.fileName}`);
             response = await fetch(`assets/${diymodelsel.value}/${item.fileName}`);
           } else {
             if(item.fileName.includes("boot_app0.bin")){              
               addToLog(`Fetching: ${diymodelsel.value.substring(0, diymodelsel.value.lastIndexOf("/") + 1)}${item.fileName}`);
-              response = await fetch(`https://cors-anywhere.herokuapp.com/${diymodelsel.value.substring(0, diymodelsel.value.lastIndexOf("/") + 1)}${item.fileName}`);
+              response = await fetch(`${diymodelsel.value.substring(0, diymodelsel.value.lastIndexOf("/") + 1)}${item.fileName}`);
             } else {
-              addToLog(`Fetching: ${diymodelsel.value}_${item.fileName}`);
-              response = await fetch(`https://cors-anywhere.herokuapp.com/${diymodelsel.value}_${item.fileName}`);
+              const url = JSON.parse(diymodelsel.value).filter(asset => asset.name.includes(item.fileName)).map(asset => asset.url)[0];
+              addToLog(`Fetching: ${url}`);
+              response = await fetch(url,
+                { headers: {
+                 "Accept": "application/octet-stream",
+                  }
+                }
+              );
             }            
           }
            
