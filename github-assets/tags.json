@@ -1,0 +1,122 @@
+[
+  {
+    "name": "nerdminer-prerelease-V1.6.4",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/nerdminer-prerelease-V1.6.4",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/nerdminer-prerelease-V1.6.4",
+    "commit": {
+      "sha": "ee4324fa01455e4d17e24ff46e363870aefb1fcf",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/ee4324fa01455e4d17e24ff46e363870aefb1fcf"
+    },
+    "node_id": "REF_kwDOJLrPztoAJXJlZnMvdGFncy9uZXJkbWluZXItcHJlcmVsZWFzZS1WMS42LjQ"
+  },
+  {
+    "name": "Release-v1.5.2",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release-v1.5.2",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release-v1.5.2",
+    "commit": {
+      "sha": "3ab4a2fb058bbecefa274bd936490ade72a384db",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/3ab4a2fb058bbecefa274bd936490ade72a384db"
+    },
+    "node_id": "REF_kwDOJLrPzrhyZWZzL3RhZ3MvUmVsZWFzZS12MS41LjI"
+  },
+  {
+    "name": "Release-v1.1",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release-v1.1",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release-v1.1",
+    "commit": {
+      "sha": "3a09daeab26f120184960b388d9df0a8ba7a552a",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/3a09daeab26f120184960b388d9df0a8ba7a552a"
+    },
+    "node_id": "REF_kwDOJLrPzrZyZWZzL3RhZ3MvUmVsZWFzZS12MS4x"
+  },
+  {
+    "name": "Release-1.6.3",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release-1.6.3",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release-1.6.3",
+    "commit": {
+      "sha": "2b34e8aeb1a9caac95f7de8728a12b280b61c455",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/2b34e8aeb1a9caac95f7de8728a12b280b61c455"
+    },
+    "node_id": "REF_kwDOJLrPzrdyZWZzL3RhZ3MvUmVsZWFzZS0xLjYuMw"
+  },
+  {
+    "name": "Release-1.6.2",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release-1.6.2",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release-1.6.2",
+    "commit": {
+      "sha": "4ed1381b7b671c8554300c1a90fb253f45d3da8d",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/4ed1381b7b671c8554300c1a90fb253f45d3da8d"
+    },
+    "node_id": "REF_kwDOJLrPzrdyZWZzL3RhZ3MvUmVsZWFzZS0xLjYuMg"
+  },
+  {
+    "name": "Release-1.6.1",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release-1.6.1",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release-1.6.1",
+    "commit": {
+      "sha": "af416251fd341ee56270acfb35ae1ce5b6a79db5",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/af416251fd341ee56270acfb35ae1ce5b6a79db5"
+    },
+    "node_id": "REF_kwDOJLrPzrdyZWZzL3RhZ3MvUmVsZWFzZS0xLjYuMQ"
+  },
+  {
+    "name": "Release-1.6.0",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release-1.6.0",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release-1.6.0",
+    "commit": {
+      "sha": "a1c15a74565e5384f81aa6f30ae63b7b3f470f3b",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/a1c15a74565e5384f81aa6f30ae63b7b3f470f3b"
+    },
+    "node_id": "REF_kwDOJLrPzrdyZWZzL3RhZ3MvUmVsZWFzZS0xLjYuMA"
+  },
+  {
+    "name": "Release-1.6.0-",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release-1.6.0-",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release-1.6.0-",
+    "commit": {
+      "sha": "7c3de1b6ebafbf277396c6f2bd8a3dbc43fba0ad",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/7c3de1b6ebafbf277396c6f2bd8a3dbc43fba0ad"
+    },
+    "node_id": "REF_kwDOJLrPzrhyZWZzL3RhZ3MvUmVsZWFzZS0xLjYuMC0"
+  },
+  {
+    "name": "Release-1.3",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release-1.3",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release-1.3",
+    "commit": {
+      "sha": "638407a3e89f91e3a49131bd15e77a078418032d",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/638407a3e89f91e3a49131bd15e77a078418032d"
+    },
+    "node_id": "REF_kwDOJLrPzrVyZWZzL3RhZ3MvUmVsZWFzZS0xLjM"
+  },
+  {
+    "name": "Release-1.2",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release-1.2",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release-1.2",
+    "commit": {
+      "sha": "360fb29df8c76c466465a9c09d21705e214fa432",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/360fb29df8c76c466465a9c09d21705e214fa432"
+    },
+    "node_id": "REF_kwDOJLrPzrVyZWZzL3RhZ3MvUmVsZWFzZS0xLjI"
+  },
+  {
+    "name": "Release1.6.0",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release1.6.0",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release1.6.0",
+    "commit": {
+      "sha": "7c3de1b6ebafbf277396c6f2bd8a3dbc43fba0ad",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/7c3de1b6ebafbf277396c6f2bd8a3dbc43fba0ad"
+    },
+    "node_id": "REF_kwDOJLrPzrZyZWZzL3RhZ3MvUmVsZWFzZTEuNi4w"
+  },
+  {
+    "name": "Release1.4",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/Release1.4",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/Release1.4",
+    "commit": {
+      "sha": "206a01bb729323b60d8b73668a58a6eedc710f1a",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/206a01bb729323b60d8b73668a58a6eedc710f1a"
+    },
+    "node_id": "REF_kwDOJLrPzrRyZWZzL3RhZ3MvUmVsZWFzZTEuNA"
+  }
+]
