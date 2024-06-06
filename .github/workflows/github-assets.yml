@@ -1,0 +1,21 @@
+name: Update github-assets Schedule
+on:
+  schedule:
+    - cron: "* */2 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  updateAssets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download assets from nerdminer releases
+        run: | 
+          curl --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' -s https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tags --create-dirs --output ${{ github.workspace }}/github-assets/tags.json
+          jq -rc '.[:3][] | select (.name | contains("nerdminer-prerelease") or contains("nerdminer-release")) | .name' ${{ github.workspace }}/github-assets/tags.json |  while read -r tag; do rm -f ${{ github.workspace }}/github-assets/$(printf $tag | jq -sRr 'gsub("[\\n\\t\\r]"; "")')/assets && curl --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' -s https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/releases/tags/$(printf $tag | jq -sRr 'gsub("[\\n\\t\\r]"; "") | @uri') | jq -r 'try .assets[] | [.name, .browser_download_url] | @csv' |  while IFS="," read -r name url; do curl --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' -L --create-dirs --output ${{ github.workspace }}/github-assets/$(printf $tag | jq -sRr 'gsub("[\\n\\t\\r\"]"; "")')/$(printf $name | jq -sRr 'gsub("[\\n\\t\\r\"]"; "")') $(printf $url | jq -sRr 'gsub("[\\n\\t\\r\"]"; "")') && echo $(printf $name | jq -sRr 'gsub("[\\n\\t\\r\"]"; "")') >> ${{ github.workspace }}/github-assets/$(printf $tag | jq -sRr 'gsub("[\\n\\t\\r]"; "")')/assets  ; done ; done
+      - name: Commit firmware
+        run: |
+          git config --global user.name 'GH CI'
+          git config --global user.email 'gh-ci@users.noreply.github.com'
+          git add . && git commit -am "ci: synchronise firmware from nerdminer releases" && git push || echo "nothing to commit"

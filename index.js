@@ -116,13 +116,22 @@ connectButton.onclick = async () => {
     {address: '0x10000', fileName: 'jade.bin', progressBar: firmwareprogressBar},
   ];  
 
-  if (diymodelsel.value.includes("https://github.com/BitMaker-hub/NerdMiner_v2")) { // github nerdminer releases
-    addressesAndFiles = [
-      {address: '0x1000', fileName: 'bootloader.bin', progressBar: btprogressBar},
-      {address: '0x8000', fileName: 'partitions.bin', progressBar: ptprogressBar},
-      {address: '0xE000', fileName: 'boot_app0.bin', progressBar: otaprogressBar},
-      {address: '0x10000', fileName: 'firmware.bin', progressBar: firmwareprogressBar},
-    ];
+  if (diymodelsel.value.includes("github-assets")) { // github nerdminer releases
+    if(["S3","C3","T-QT","T-Embed","NerminerV2"].some(val => diymodelsel.value.includes(val))){
+      addressesAndFiles = [
+        {address: '0x0000', fileName: 'bootloader.bin', progressBar: btprogressBar},
+        {address: '0x8000', fileName: 'partitions.bin', progressBar: ptprogressBar},
+        {address: '0xE000', fileName: 'boot_app0.bin', progressBar: otaprogressBar},
+        {address: '0x10000', fileName: 'firmware.bin', progressBar: firmwareprogressBar},
+      ];
+    } else {
+      addressesAndFiles = [
+        {address: '0x1000', fileName: 'bootloader.bin', progressBar: btprogressBar},
+        {address: '0x8000', fileName: 'partitions.bin', progressBar: ptprogressBar},
+        {address: '0xE000', fileName: 'boot_app0.bin', progressBar: otaprogressBar},
+        {address: '0x10000', fileName: 'firmware.bin', progressBar: firmwareprogressBar},
+      ];
+    }
   }
   else if (["han_0.0.1_m5stack"].includes(diymodelsel.value)) { // han
     addressesAndFiles = [
@@ -207,16 +216,16 @@ connectButton.onclick = async () => {
   for (const item of addressesAndFiles) {
         try {
           var response;
-          if(!diymodelsel.value.includes("https://github.com/BitMaker-hub/NerdMiner_v2")){
+          if(!diymodelsel.value.includes("github-assets")){
             addToLog(`Fetching: assets/${diymodelsel.value}/${item.fileName}`);
             response = await fetch(`assets/${diymodelsel.value}/${item.fileName}`);
           } else {
             if(item.fileName.includes("boot_app0.bin")){              
               addToLog(`Fetching: ${diymodelsel.value.substring(0, diymodelsel.value.lastIndexOf("/") + 1)}${item.fileName}`);
-              response = await fetch(`https://cors-anywhere.herokuapp.com/${diymodelsel.value.substring(0, diymodelsel.value.lastIndexOf("/") + 1)}${item.fileName}`);
+              response = await fetch(`${diymodelsel.value.substring(0, diymodelsel.value.lastIndexOf("/") + 1)}${item.fileName}`);
             } else {
               addToLog(`Fetching: ${diymodelsel.value}_${item.fileName}`);
-              response = await fetch(`https://cors-anywhere.herokuapp.com/${diymodelsel.value}_${item.fileName}`);
+              response = await fetch(`${diymodelsel.value}_${item.fileName}`);
             }            
           }
            
