@@ -131,7 +131,7 @@
                     .then(response => response.text())                        
                     .then(text => text.split("\n"))
                     .then(versions => {                        
-                        versions.forEach(tag => {
+                        versions.filter(version => version).forEach(tag => {
                             fetch(`github-assets/${tag}/assets`)                        
                             .then(response => response.text())    
                             .then(text => text.split("\n"))
