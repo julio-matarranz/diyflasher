@@ -127,19 +127,17 @@
 
                 function addGithubReleases() {
                     
-                    fetch("github-assets/tags.json")
-                    .then(response => response.json())                        
-                    .then(tags => tags
-                        .map(tag => tag.name)
-                        .filter(tag => ["nerdminer-prerelease", "nerdminer-release"].some(val => tag.includes(val)))
-                        .slice(0, 2)
-                        .forEach(tag => {
+                    fetch("github-assets/VERSIONS")
+                    .then(response => response.text())                        
+                    .then(text => text.split("\n"))
+                    .then(versions => {                        
+                        versions.forEach(tag => {
                             fetch(`github-assets/${tag}/assets`)                        
                             .then(response => response.text())    
                             .then(text => text.split("\n"))
                             .then(assets => {
                                 assets.filter(asset => asset.includes("firmware"))
-                                .map(asset => asset.split("_firmware.bin")[0])
+                                .map(asset => asset.split("_firmware.bin")[0])                                
                                 .map((device) =>         
                                     ({
                                     name: device.split("_firmware.bin")[0],
@@ -150,8 +148,8 @@
                                     diymodelsel.options[diymodelsel.options.length] = new Option(tag+"_"+device.name,device.download_url,0, false)
                                 )
                             })
-                        })
-                    );
+                        });
+                    });
                           
                 }
 
