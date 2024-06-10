@@ -1,5 +1,15 @@
 [
   {
+    "name": "nerdminer-prerelease-V1.7.0",
+    "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/nerdminer-prerelease-V1.7.0",
+    "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/nerdminer-prerelease-V1.7.0",
+    "commit": {
+      "sha": "f75fd09ccb9492ce5c2213d21775e5c5eef2c586",
+      "url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/commits/f75fd09ccb9492ce5c2213d21775e5c5eef2c586"
+    },
+    "node_id": "REF_kwDOJLrPztoAJXJlZnMvdGFncy9uZXJkbWluZXItcHJlcmVsZWFzZS1WMS43LjA"
+  },
+  {
     "name": "nerdminer-prerelease-V1.6.4",
     "zipball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/zipball/refs/tags/nerdminer-prerelease-V1.6.4",
     "tarball_url": "https://api.github.com/repos/BitMaker-hub/NerdMiner_v2/tarball/refs/tags/nerdminer-prerelease-V1.6.4",
