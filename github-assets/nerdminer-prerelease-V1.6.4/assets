@@ -10,7 +10,6 @@ ESP32-C3-super-mini_firmware.bin
 ESP32-C3-super-mini_partitions.bin
 ESP32-D0WD-V3-weact_bootloader.bin
 ESP32-D0WD-V3-weact_firmware.bin
-ESP32-D0WD-V3-weact_partitions.bin
 ESP32-devKitv1_bootloader.bin
 ESP32-devKitv1_firmware.bin
 ESP32-devKitv1_partitions.bin
@@ -20,7 +19,6 @@ ESP32-S2-mini-wemos_partitions.bin
 ESP32-S3-devKitv1_bootloader.bin
 ESP32-S3-devKitv1_firmware.bin
 ESP32-S3-devKitv1_partitions.bin
-ESP32-S3-mini-weact_bootloader.bin
 ESP32-S3-mini-weact_firmware.bin
 ESP32-S3-mini-weact_partitions.bin
 ESP32-S3-mini-wemos_bootloader.bin
@@ -30,7 +28,6 @@ esp32cam_bootloader.bin
 esp32cam_firmware.bin
 esp32cam_partitions.bin
 ESP32_2432S028_2USB_bootloader.bin
-ESP32_2432S028_2USB_firmware.bin
 ESP32_2432S028_2USB_partitions.bin
 han_m5stack_bootloader.bin
 han_m5stack_firmware.bin
@@ -40,7 +37,6 @@ Lilygo-T-Embed_firmware.bin
 Lilygo-T-Embed_partitions.bin
 M5-StampS3_bootloader.bin
 M5-StampS3_firmware.bin
-M5-StampS3_partitions.bin
 M5Stick-C_bootloader.bin
 M5Stick-C_firmware.bin
 M5Stick-C_partitions.bin
