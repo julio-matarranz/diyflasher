@@ -33,8 +33,6 @@ ESP32_2432S028_2USB_bootloader.bin
 ESP32_2432S028_2USB_firmware.bin
 ESP32_2432S028_2USB_partitions.bin
 han_m5stack_bootloader.bin
-han_m5stack_firmware.bin
-han_m5stack_partitions.bin
 Lilygo-T-Embed_bootloader.bin
 Lilygo-T-Embed_firmware.bin
 Lilygo-T-Embed_partitions.bin
@@ -43,9 +41,7 @@ M5-StampS3_firmware.bin
 M5-StampS3_partitions.bin
 M5Stick-C_bootloader.bin
 M5Stick-C_firmware.bin
-M5Stick-C_partitions.bin
 NerdminerV2-T-Display_V1_bootloader.bin
-NerdminerV2-T-Display_V1_firmware.bin
 NerdminerV2-T-Display_V1_partitions.bin
 NerdminerV2-T-HMI_bootloader.bin
 NerdminerV2-T-HMI_firmware.bin

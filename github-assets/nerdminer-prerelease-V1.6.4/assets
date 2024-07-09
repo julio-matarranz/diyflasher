@@ -55,7 +55,6 @@ NerminerV2-S3-AMOLED-TOUCH_firmware.bin
 NerminerV2-S3-AMOLED-TOUCH_partitions.bin
 NerminerV2-S3-AMOLED_bootloader.bin
 NerminerV2-S3-AMOLED_firmware.bin
-NerminerV2-S3-AMOLED_partitions.bin
 NerminerV2-S3-DONGLE_bootloader.bin
 NerminerV2-S3-DONGLE_firmware.bin
 NerminerV2-S3-DONGLE_partitions.bin
@@ -65,7 +64,6 @@ NerminerV2-S3-GEEK_partitions.bin
 NerminerV2-T-QT_bootloader.bin
 NerminerV2-T-QT_firmware.bin
 NerminerV2-T-QT_partitions.bin
-NerminerV2_bootloader.bin
 NerminerV2_firmware.bin
 NerminerV2_partitions.bin
 wt32-sc01-plus_bootloader.bin
