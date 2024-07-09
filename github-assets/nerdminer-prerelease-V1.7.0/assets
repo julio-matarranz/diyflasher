@@ -4,6 +4,8 @@ ESP32-2432S028R_firmware.bin
 ESP32-2432S028R_partitions.bin
 ESP32-C3-devKitmv1_bootloader.bin
 ESP32-C3-devKitmv1_firmware.bin
+ESP32-C3-devKitmv1_partitions.bin
+ESP32-C3-super-mini_bootloader.bin
 ESP32-C3-super-mini_firmware.bin
 ESP32-C3-super-mini_partitions.bin
 ESP32-D0WD-V3-weact_bootloader.bin
@@ -12,6 +14,7 @@ ESP32-D0WD-V3-weact_partitions.bin
 ESP32-devKitv1_bootloader.bin
 ESP32-devKitv1_firmware.bin
 ESP32-devKitv1_partitions.bin
+ESP32-S2-mini-wemos_bootloader.bin
 ESP32-S2-mini-wemos_firmware.bin
 ESP32-S2-mini-wemos_partitions.bin
 ESP32-S3-devKitv1_bootloader.bin
