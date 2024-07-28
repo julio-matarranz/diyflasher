@@ -12,74 +12,75 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <style>
-            .image-container {
-                position: relative;
-                height: 500px; /* Fixed height */
-                background-color: black; /* Background color for the container */
-                overflow: hidden; /* Hide overflow */
-            }
-            .slideshow {
-                position: absolute;
-                top: 0;
-                left: 100%;
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                background-color: black;
-                transition: left 1s ease-in-out;
-            }
-            .slideshow.active {
-                left: 0;
-            }
-            .slideshow.previous {
-                left: -100%;
-            }
-            .slideshow:nth-child(2) {
-                background: linear-gradient(to right, #CCCCCC, #CCCCCC); /* Gradient background for the second image */
-            }
-            .slideshow:nth-child(3) {
-                background-color: #2B2727; /* Background color for the third image */
-            }
-            .content-container {
-                margin: 0 auto; /* Center horizontally */
-                max-width: 800px; /* Fixed width */
-                text-align: left; /* Align text to the left */
-                padding: 20px; /* Padding for some spacing */
-            }
-            .header-background {
-                background-color: #FFB000;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                padding: 10px 0;
-            }
-            .site-header {
-                width: 900px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .site-branding {
-                display: flex;
-                align-items: center;
-            }
-            .site-branding img {
-                height: 30px;
-            }
-            .main-navigation {
-                display: flex;
-                gap: 15px;
-            }
-            .main-navigation a {
-                color: #ffffff;
-                text-decoration: none;
-                font-size: 16px;
-                font-weight: bold;
-                font-family: Fredoka, sans-serif; /* Aplicar fuente Fredoka */
-            }
-            .main-navigation a:hover {
-                color: #000000;
-            }
+        .image-container {
+            position: relative;
+            height: 500px; /* Fixed height */
+            background-color: black; /* Background color for the container */
+            overflow: hidden; /* Hide overflow */
+        }
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: black;
+            transition: left 1s ease-in-out;
+        }
+        .slideshow.active {
+            left: 0;
+        }
+        .slideshow.previous {
+            left: -100%;
+        }
+        .slideshow:nth-child(2) {
+            background: linear-gradient(to right, #CCCCCC, #CCCCCC); /* Gradient background for the second image */
+        }
+        .slideshow:nth-child(3) {
+            background-color: #2B2727; /* Background color for the third image */
+        }
+        .content-container {
+            margin: 0 auto; /* Center horizontally */
+            max-width: 800px; /* Fixed width */
+            text-align: left; /* Align text to the left */
+            padding: 20px; /* Padding for some spacing */
+        }
+        .header-background {
+            background-color: #FFB000;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        .site-header {
+            width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .site-branding {
+            display: flex;
+            align-items: center;
+        }
+        .site-branding img {
+            height: 30px;
+        }
+        .main-navigation {
+            display: flex;
+            gap: 15px;
+        }
+        .main-navigation a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: Fredoka, sans-serif; /* Aplicar fuente Fredoka */
+        }
+        .main-navigation a:hover {
+            color: #000000;
+        }
+
         </style>
     </head>
     <body>
@@ -189,7 +190,7 @@
                                 .map((device) =>         
                                     ({
                                     name: device.split("_firmware.bin")[0],
-                                    download_url: `github-assets/${tag}/${device.split("_firmware.bin")[0]}`
+                                    download_url: `github-assets/${tag}/${device.split("_firmware.bin")[0]}`                                    
                                     })
                                 )
                                 .forEach(device => 
