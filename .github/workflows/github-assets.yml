@@ -1,0 +1,20 @@
+name: Update github-assets Schedule
+on:
+  schedule:
+    - cron: "* */2 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  updateAssets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download assets from nerdminer releases
+        run: | 
+          bash ${{ github.workspace }}/scripts/update-assets.sh "${{ github.workspace }}" "${{ secrets.GITHUB_TOKEN }}"
+      - name: Commit firmware
+        run: |
+          git config --global user.name 'GH CI'
+          git config --global user.email 'gh-ci@users.noreply.github.com'
+          git add . && git commit -am "ci: synchronise firmware from nerdminer releases" && git push || echo "nothing to commit"

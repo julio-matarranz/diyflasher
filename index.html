@@ -59,6 +59,7 @@
             <h4 align="left">A Flasher utility for DIY miners</h4>
             <div>
                 <label><input type="radio" name="device" value="NerdMiner" checked> NerdMiner</label>
+                <label><input type="radio" name="device" value="NerdMiner-Github"> NerdMiner-Github</label>
                 <label><input type="radio" name="device" value="NerdAxe"> NerdAxe</label>
                 <label><input type="radio" name="device" value="Bitaxe"> Bitaxe</label>
             </div>
@@ -125,6 +126,34 @@
                     { value: "bitaxe_1.0.0", text: "Bitaxe firmware - Under construction" }
                 ];
 
+                function addGithubReleases() {
+                    
+                    fetch("github-assets/VERSIONS")
+                    .then(response => response.text())                        
+                    .then(text => text.split("\n"))
+                    .then(versions => {                        
+                        versions.filter(version => version).forEach(tag => {
+                            fetch(`github-assets/${tag}/assets`)                        
+                            .then(response => response.text())    
+                            .then(text => text.split("\n"))
+                            .then(assets => {
+                                assets.filter(asset => asset.includes("firmware"))
+                                .map(asset => asset.split("_firmware.bin")[0])                                
+                                .map((device) =>         
+                                    ({
+                                    name: device.split("_firmware.bin")[0],
+                                    download_url: `github-assets/${tag}/${device.split("_firmware.bin")[0]}`
+                                    })
+                                )
+                                .forEach(device => 
+                                    diymodelsel.options[diymodelsel.options.length] = new Option(tag+"_"+device.name,device.download_url,0, false)
+                                )
+                            })
+                        });
+                    });
+                          
+                }
+
                 function updateOptions(options) {
                     diymodelsel.innerHTML = '';
                     options.forEach(option => {
@@ -149,6 +178,12 @@
                         switch (event.target.value) {
                             case 'NerdMiner':
                                 updateOptions(nerdMinerOptions);
+                                showImage(0);
+                                deviceInfo.innerText = "Flashing NerdMiner firmware should be less than 1 minute";
+                                break;
+                            case 'NerdMiner-Github':
+                                diymodelsel.innerHTML = '';
+                                addGithubReleases();
                                 showImage(0);
                                 deviceInfo.innerText = "Flashing NerdMiner firmware should be less than 1 minute";
                                 break;
