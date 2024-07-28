@@ -190,6 +190,10 @@ connectButton.onclick = async () => {
     addressesAndFiles = [
       {address: '0x0000', fileName: 'esp-miner-factory-nerd101-v2.1.4.bin', progressBar: firmwareprogressBar},
    ]; 
+   } else if (["nerdAxe_2.1.5"].includes(diymodelsel.value)) { // nerdaxe
+    addressesAndFiles = [
+      {address: '0x0000', fileName: 'esp-miner-factory-nerd101-v2.1.5.bin', progressBar: firmwareprogressBar},
+   ]; 
    }
 
 
