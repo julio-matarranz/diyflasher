@@ -39,36 +39,36 @@ eraseButton.onclick = async () => {
     transport = new Transport(device);
   }
 
-  firmwareprogressBarlbl.style.display = 'block';
+  const spinner = document.getElementById("loadingSpinner");
+  spinner.style.display = 'block'; 
 
+  var baudrate = 115200;
 
   try {
-    try {
       esploader = new ESPLoader(transport, baudrate, null);
-      chip = await esploader.connect('default_reset', 3, true);
-    } catch (e) {
-      console.error(e);
-    }
-    console.log(`Connected to ${chip}.`);
-    await esploader.eraseFlash();
-    addToLog('Erase flash complete.');
-    document.getElementById("success").innerHTML = "Successfully erased flash memory";
+      chip = await esploader.main_fn();
+      addToLog(`Connected to chip: ${chip}`);
+      addToLog('Erasing flash... please wait');
+      await esploader.erase_flash();
+      addToLog('Erase flash complete.');
+      document.getElementById("success").innerHTML = "Successfully erased flash memory";
   } catch (e) {
-    console.error(e);
-    addToLog(`Erasing flash failed: ${e}`);
-    document.getElementById("success").innerHTML = `Erasing flash failed: ${e}`;
+      console.error(e);
+      addToLog(`Erasing flash failed: ${e}`);
+      document.getElementById("success").innerHTML = `Erasing flash failed: ${e}`;
   } finally {
-    // Restore the DTR (Data Terminal Ready) line to its default state
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    await transport.setDTR(false);
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    await transport.setDTR(true);
+      // Restore the DTR (Data Terminal Ready) line to its default state
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      await transport.setDTR(false);
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      await transport.setDTR(true);
 
-    // Restore the visibility of the UI elements
-    eraseButton.style.display = 'block';
-    connectButton.style.display = 'block';
-    lbldiymodels.style.display = 'block';
-    diymodelsel.style.display = 'block';
+      // Restore the visibility of the UI elements
+      eraseButton.style.display = 'block';
+      connectButton.style.display = 'block';
+      lbldiymodels.style.display = 'block';
+      diymodelsel.style.display = 'block';
+      spinner.style.display = 'none'; 
   }
 };
 
